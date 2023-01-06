@@ -4,6 +4,8 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 bool comment(const std::string& s){
     if(s.at(0) == '#'){
@@ -47,3 +49,7 @@ int main(){
     return 0;
 }
 
+PYBIND11_MODULE(find, f){
+    f.doc() = "Search text from domain text";
+    f.def("_search", &search, "A function that discrimination url is in list");
+}
