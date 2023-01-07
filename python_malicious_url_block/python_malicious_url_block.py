@@ -21,6 +21,7 @@ class url_block():
             filter_url = []
         filter_url.append("https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-domains.txt")
         self.filter_url = filter_url
+        
 
         #set tmp dir
         if(os.name == 'nt'):
@@ -50,7 +51,7 @@ class url_block():
         else:
             with open(f"{self.tmp_dir}/count") as f:
                 s = f.read()
-                if(s != len(self.filter_url)):
+                if(s != str(len(self.filter_url))):
                     update_require = True
         
 
