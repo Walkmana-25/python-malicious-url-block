@@ -61,7 +61,7 @@ class TestPython_malicious_url_block(unittest.TestCase):
         result = test.check_safe("yahoo.co.jp")
         self.assertEqual(result, True)
 
-        result = test.check_safe("updateheavilyadvancedtheproduct.vip")
+        result = test.check_safe("hansview.ru")
         self.assertEqual(result, False)
 
 if __name__ == "__main__":

@@ -3,8 +3,7 @@ import os
 from urllib.request import urlopen
 from shutil import copyfileobj
 import datetime
-from ._utils import search
-
+import _utils
 
 class url_block():
     """check the given url is safe
@@ -18,6 +17,8 @@ class url_block():
 
 
     def __init__(self, filter_url = None):
+        if(type(filter_url) != list):
+            filter_url = []
         filter_url.append("https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-domains.txt")
         self.filter_url = filter_url
 
@@ -44,13 +45,32 @@ class url_block():
                 if(s != today):
                     update_require = True
 
+        if(("count" in dir) == False):
+            update_require = True
+        else:
+            with open(f"{self.tmp_dir}/count") as f:
+                s = f.read()
+                if(s != len(self.filter_url)):
+                    update_require = True
+        
+
         if(update_require == True):
             with open(f"{self.tmp_dir}/last_downloaded", mode = "w") as f:
                 f.write(str(datetime.date.today()))
 
-            for i in range(len(self.url_list)):
-                with urlopen(self.url_list[i]) as input_file, open(f"{self.tmp_dir}/{i}") as output_file:
+            for i in range(len(self.filter_url)):
+                with urlopen(self.filter_url[i]) as input_file, open(f"{self.tmp_dir}/{i}", mode="wb") as output_file:
                     copyfileobj(input_file, output_file)
+                    self.filter_list.append(f"{self.tmp_dir}/{i}")
+
+            with open(f"{self.tmp_dir}/count", mode="w") as f:
+                f.write(str(len(self.filter_url)))
+
+        else:
+            for i in dir:
+                if(i == "last_downloaded"):
+                    pass
+                else:
                     self.filter_list.append(f"{self.tmp_dir}/{i}")
 
     def check_safe(self, url) -> bool:
@@ -66,7 +86,7 @@ class url_block():
         ans = True
 
         for i in self.filter_list:
-            if(search(url, self.filter_list[i] == True)):
+            if(_utils.search(url, i) == True):
                 ans = False
 
         return ans
