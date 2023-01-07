@@ -58,6 +58,7 @@ class url_block():
 
         Args:
             url (str): url you want to check
+                Ex: google.com
 
         Returns:
             bool: if url is safe, return True. else return False
