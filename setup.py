@@ -52,7 +52,7 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/walkmana-25/python-malicious-url-block',
-    version='0.1.0',
+    version='0.1.1',
     zip_safe=False,
     cmdclass={"build_ext": build_ext},
     ext_modules=ext_modules
