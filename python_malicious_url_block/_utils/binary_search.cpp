@@ -49,7 +49,6 @@ int main(){
     return 0;
 }
 
-PYBIND11_MODULE(find, f){
-    f.doc() = "Search text from domain text";
-    f.def("_search", &search, "A function that discrimination url is in list");
+PYBIND11_MODULE(_utils, m){
+    m.def("search", &search, "A function that discrimination url is in list");
 }

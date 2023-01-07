@@ -21,8 +21,8 @@ test_requirements = [ ]
 
 ext_modules = [
     Pybind11Extension(
-        "python-malicious-url-block",
-        sorted(glob("python-malicious-url-block/*.cpp")),
+        "_utils",
+        sorted(glob("python_malicious_url_block/_utils/*.cpp")),
 
     ),
 ]

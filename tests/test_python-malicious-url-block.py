@@ -5,7 +5,7 @@
 
 import unittest
 
-from python_malicious_url_block import python_malicious_url_block
+from python_malicious_url_block import url_block
 
 
 class TestPython_malicious_url_block(unittest.TestCase):
