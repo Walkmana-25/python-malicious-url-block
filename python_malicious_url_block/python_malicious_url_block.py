@@ -3,7 +3,6 @@ import os
 from urllib.request import urlopen
 from shutil import copyfileobj
 import datetime
-import _utils
 
 class url_block():
     """check the given url is safe
@@ -87,6 +86,7 @@ class url_block():
         ans = True
 
         for i in self.filter_list:
+            import _utils
             if(_utils.search(url, i) == True):
                 ans = False
 
