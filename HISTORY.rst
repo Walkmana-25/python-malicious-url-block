@@ -12,3 +12,7 @@ History
 
 * Small fixes
 * Documentation update
+
+0.1.2
+------------------
+* Fix Import Error

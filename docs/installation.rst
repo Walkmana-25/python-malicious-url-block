@@ -5,7 +5,7 @@ Installation
 ============
 
 
-Stable release
+Stable release(For Linux and x86_64)
 --------------
 
 To install Python_Malicious_Url_Block, run this command in your terminal:
@@ -23,7 +23,7 @@ you through the process.
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
-From sources
+From sources(For Other Platform Such as ARM, Windows and Mac OS X)
 ------------
 
 The sources for Python_Malicious_Url_Block can be downloaded from the `Github repo`_.
