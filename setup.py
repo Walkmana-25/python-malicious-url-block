@@ -20,9 +20,8 @@ requirements = ["pybind11"]
 test_requirements = [ ]
 
 ext_modules = [
-    Pybind11Extension(
-        "python_malicious_url_block._utils",
-        sorted(glob("python_malicious_url_block/_utils/*.cpp")),
+    Pybind11Extension("_utils",
+        ["python_malicious_url_block/_utils/binary_search.cpp"]
 
     ),
 ]
@@ -54,5 +53,5 @@ setup(
     version='0.1.1',
     zip_safe=False,
     cmdclass={"build_ext": build_ext},
-    ext_modules=ext_modules
+    ext_modules=ext_modules,
 )
